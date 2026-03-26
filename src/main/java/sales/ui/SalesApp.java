@@ -11,6 +11,7 @@ import sales.ui.views.ErrorView;
 
 public class SalesApp extends Application implements MainWindow {
 
+    // So that we can implement the MainWindow interface
     private Stage primaryStage;
     private BorderPane mainLayout;
     private AppController appController;
@@ -20,6 +21,7 @@ public class SalesApp extends Application implements MainWindow {
         this.primaryStage = primaryStage;
 
         this.appController = new AppController(this);
+        // Get the main layout from the AppController
         this.mainLayout = this.appController.setMainLayout();
 
         primaryStage.setScene(new Scene(mainLayout, 800,600));

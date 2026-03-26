@@ -8,10 +8,19 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+/**
+ * A TextField that only accepts numeric input
+ */
 public class NumberField extends TextField {
 
     private final TextFormatter<Number> formatter;
 
+    /**
+     * Create a NumberField
+     * @param value Initial value
+     * @param allowNegative Whether to allow negative numbers
+     * @param decimalPlaces Number of decimal places to show
+     */
     public NumberField(Number value, boolean allowNegative, int decimalPlaces) {
         // NumberFormat for integers in the default locale
         NumberFormat format = NumberFormat.getInstance(Locale.getDefault());
