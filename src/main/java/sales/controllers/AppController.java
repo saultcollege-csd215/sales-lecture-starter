@@ -1,32 +1,19 @@
 package sales.controllers;
 
 import javafx.scene.layout.BorderPane;
-import sales.data.DataService;
-import sales.data.ProductRepository;
+import sales.data.*;
 import sales.ui.MainWindow;
 import sales.ui.views.MainLayout;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
 public class AppController extends BaseController {
-
-    private final Connection connection;
 
     private final ProductController productController;
 
-    public AppController(MainWindow mainWindow) {
+    public AppController(MainWindow mainWindow, DataService dataService) {
         super(mainWindow);
-        try {
-            this.connection = DataService.getConnection();
+        var productRepo = dataService.getProductRepository();
 
-            var productRepo = new ProductRepository(connection);
-
-            this.productController = new ProductController(mainWindow, productRepo);
-
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
+        this.productController = new ProductController(mainWindow, productRepo);
     }
 
     public BorderPane setMainLayout() {
@@ -34,14 +21,6 @@ public class AppController extends BaseController {
                 productController::showNewProduct,
                 productController::showProducts
         );
-    }
-
-    public void stop() {
-        try {
-            connection.close();
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
     }
 
 }

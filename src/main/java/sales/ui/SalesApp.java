@@ -1,38 +1,50 @@
 package sales.ui;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import sales.controllers.AppController;
+import sales.data.DataService;
 import sales.ui.views.ErrorView;
-
 
 public class SalesApp extends Application implements MainWindow {
 
-    // So that we can implement the MainWindow interface
+    private DataService dataService;
     private Stage primaryStage;
     private BorderPane mainLayout;
-    private AppController appController;
 
     @Override
     public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
 
-        this.appController = new AppController(this);
-        // Get the main layout from the AppController
-        this.mainLayout = this.appController.setMainLayout();
+        try {
+            this.dataService = new DataService();
+            var appController = new AppController(this, dataService);
+            this.mainLayout = appController.setMainLayout();
 
-        primaryStage.setScene(new Scene(mainLayout, 800,600));
+            this.primaryStage = primaryStage;
+            primaryStage.setScene(new Scene(mainLayout, 800, 600));
 
-        primaryStage.show();
+            primaryStage.show();
+        } catch (Exception e) {
+            var alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("An error has occurred during application startup.");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+            Platform.exit();
+        }
 
     }
 
     @Override
     public void stop() {
-        appController.stop();
+        if ( dataService != null ) {
+            dataService.stop();
+        }
     }
 
     public void setTitle(String title) {
