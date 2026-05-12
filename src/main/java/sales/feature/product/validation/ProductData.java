@@ -1,4 +1,4 @@
-package sales.core.validation;
+package sales.feature.product.validation;
 
 public sealed interface ProductData {
 

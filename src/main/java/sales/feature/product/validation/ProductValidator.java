@@ -1,4 +1,6 @@
-package sales.core.validation;
+package sales.feature.product.validation;
+
+import sales.feature.base.validation.ValidationMessages;
 
 public class ProductValidator {
 

@@ -1,16 +1,16 @@
 package sales.feature.product;
 
 import sales.core.Product;
-import sales.core.validation.ProductValidator;
-import sales.core.validation.ValidationMessages;
+import sales.feature.product.validation.ProductValidator;
+import sales.feature.base.validation.ValidationMessages;
 import sales.feature.base.controller.BaseController;
 import sales.feature.base.ui.MainWindow;
 import sales.feature.product.ui.ProductEditView;
 import sales.feature.product.ui.ProductNewView;
 import sales.feature.product.ui.ProductsView;
 
-import sales.core.validation.ProductData;
-import static sales.core.validation.ProductValidator.Result.*;
+import sales.feature.product.validation.ProductData;
+import static sales.feature.product.validation.ProductValidator.Result.*;
 
 public class ProductController extends BaseController {
 

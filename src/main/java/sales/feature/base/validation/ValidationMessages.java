@@ -1,4 +1,4 @@
-package sales.core.validation;
+package sales.feature.base.validation;
 
 import java.util.HashMap;
 import java.util.Map;

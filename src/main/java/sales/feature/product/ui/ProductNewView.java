@@ -6,12 +6,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
-import sales.core.validation.ValidationMessages;
+import sales.feature.base.validation.ValidationMessages;
 import sales.feature.base.ui.helpers.NumberField;
 
 import java.util.function.Consumer;
 
-import sales.core.validation.ProductData;
+import sales.feature.product.validation.ProductData;
 import static sales.feature.base.ui.helpers.JavaFXUtils.addValidatedFieldToGrid;
 
 public class ProductNewView {
