@@ -13,7 +13,7 @@ import sales.ui.helpers.NumberField;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-import static sales.core.validation.ProductValidator.ProductData;
+import sales.core.validation.ProductData;
 import static sales.ui.helpers.JavaFXUtils.addValidatedFieldToGrid;
 
 public class ProductEditView {

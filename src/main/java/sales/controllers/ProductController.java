@@ -3,14 +3,13 @@ package sales.controllers;
 import sales.core.Product;
 import sales.core.validation.ProductValidator;
 import sales.core.validation.ValidationMessages;
-import sales.data.DataAccessException;
 import sales.data.ProductRepository;
 import sales.ui.MainWindow;
 import sales.ui.views.ProductEditView;
 import sales.ui.views.ProductNewView;
 import sales.ui.views.ProductsView;
 
-import static sales.core.validation.ProductValidator.ProductData;
+import sales.core.validation.ProductData;
 import static sales.core.validation.ProductValidator.Result.*;
 
 public class ProductController extends BaseController {

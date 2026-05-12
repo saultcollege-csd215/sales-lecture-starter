@@ -2,24 +2,6 @@ package sales.core.validation;
 
 public class ProductValidator {
 
-    public sealed interface ProductData {
-
-        record Unvalidated(
-                String name,
-                double price,
-                int unitsInStock,
-                boolean discontinued
-        ) implements ProductData {}
-
-        record Validated(
-                String name,
-                double price,
-                int unitsInStock,
-                boolean discontinued
-        ) implements ProductData {}
-
-    }
-
     public sealed interface Result {
         record Pass(ProductData.Validated validatedProduct) implements Result {}
         record Fail(ValidationMessages messages) implements Result {}

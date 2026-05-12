@@ -14,11 +14,9 @@ public class AppController extends BaseController {
     /** The controller for product-related screens. */
     private final ProductController productController;
 
-    public AppController(MainWindow mainWindow, DataService dataService) {
+    public AppController(MainWindow mainWindow, ProductController productController) {
         super(mainWindow);
-        var productRepo = dataService.getProductRepository();
-
-        this.productController = new ProductController(mainWindow, productRepo);
+        this.productController = productController;
     }
 
     /** Sets up the main BorderPane layout of the application and returns it. */

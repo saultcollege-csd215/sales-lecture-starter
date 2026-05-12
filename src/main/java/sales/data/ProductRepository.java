@@ -1,6 +1,7 @@
 package sales.data;
 
 import sales.core.Product;
+import sales.core.validation.ProductData;
 import sales.core.validation.ProductValidator;
 
 import java.sql.Connection;
@@ -49,7 +50,7 @@ public class ProductRepository extends BaseRepository {
         }
     }
 
-    public Product create(ProductValidator.ProductData.Validated p) throws DataAccessException{
+    public Product create(ProductData.Validated p) throws DataAccessException{
         try {
             var statement = connection.prepareStatement(
                     """
@@ -79,7 +80,7 @@ public class ProductRepository extends BaseRepository {
         }
     }
 
-    public Product update(int productId, ProductValidator.ProductData.Validated p) throws DataAccessException {
+    public Product update(int productId, ProductData.Validated p) throws DataAccessException {
         try {
             var statement = connection.prepareStatement(
                     """
