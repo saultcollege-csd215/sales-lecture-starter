@@ -3,7 +3,7 @@ package sales.core.validation;
 public class ProductValidator {
 
     public sealed interface Result {
-        record Pass(ProductData.Validated validatedProduct) implements Result {}
+        record Pass(ProductData.Validated validatedProductData) implements Result {}
         record Fail(ValidationMessages messages) implements Result {}
     }
 

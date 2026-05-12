@@ -76,7 +76,7 @@ public class ProductController extends BaseController {
 
             switch (validationResult) {
                 case Pass result -> {
-                    var validatedProduct = result.validatedProduct();
+                    var validatedProduct = result.validatedProductData();
                     repo.create(validatedProduct);
                     showProducts();
                 }
@@ -91,7 +91,7 @@ public class ProductController extends BaseController {
 
             switch (validationResult) {
                 case Pass result -> {
-                    var validatedProduct = result.validatedProduct();
+                    var validatedProduct = result.validatedProductData();
                     var updatedProduct = repo.update(productId, validatedProduct);
                     showProduct(updatedProduct);
                 }
