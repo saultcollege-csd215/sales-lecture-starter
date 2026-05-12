@@ -7,30 +7,30 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import sales.feature.base.controller.AppController;
+import sales.feature.base.ui.views.MainLayout;
 import sales.feature.product.ProductController;
 import sales.feature.base.data.DataService;
 import sales.feature.base.ui.views.ErrorView;
 
-public class SalesApp extends Application implements MainWindow {
+public class SalesApp extends Application {
 
     private DataService dataService;
-    private Stage primaryStage;
-    private BorderPane mainLayout;
 
     @Override
     public void start(Stage primaryStage) {
 
         try {
+            var layoutManager = new LayoutManager(primaryStage);
+
             this.dataService = new DataService("jdbc:sqlite:northwind.db");
             var productRepo = dataService.getProductRepository();
 
-            var productController = new ProductController(this, productRepo);
-            var appController = new AppController(this, productController);
-            this.mainLayout = appController.setMainLayout();
+            var productController = new ProductController(layoutManager, productRepo);
 
-            this.primaryStage = primaryStage;
-            primaryStage.setScene(new Scene(mainLayout, 800, 600));
+            layoutManager.setMainLayout(MainLayout.createScene(
+                    productController::showNewProduct,
+                    productController::showProducts
+            ));
 
             primaryStage.show();
         } catch (Exception e) {
@@ -49,23 +49,6 @@ public class SalesApp extends Application implements MainWindow {
         if ( dataService != null ) {
             dataService.stop();
         }
-    }
-
-    public void setTitle(String title) {
-        var t = "Sales Application";
-        if (!title.isEmpty()) {
-            t += " - " + title;
-        }
-        primaryStage.setTitle(t);
-    }
-
-    public void setMainScene(Node n) {
-        mainLayout.setCenter(n);
-    }
-
-    public void showError(Exception e) {
-        primaryStage.setTitle("Error");
-        mainLayout.setCenter(ErrorView.createScene(e));
     }
 
 }
