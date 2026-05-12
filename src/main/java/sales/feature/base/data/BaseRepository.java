@@ -1,4 +1,4 @@
-package sales.data;
+package sales.feature.base.data;
 
 import java.sql.Connection;
 import java.sql.SQLException;

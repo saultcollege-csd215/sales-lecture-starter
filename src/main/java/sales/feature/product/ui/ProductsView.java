@@ -1,4 +1,4 @@
-package sales.ui.views;
+package sales.feature.product.ui;
 
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
@@ -9,8 +9,8 @@ import sales.core.Product;
 import java.util.List;
 import java.util.function.Consumer;
 
-import static sales.ui.helpers.JavaFXUtils.createColumn;
-import static sales.ui.helpers.JavaFXUtils.setOnDoubleClick;
+import static sales.feature.base.ui.helpers.JavaFXUtils.createColumn;
+import static sales.feature.base.ui.helpers.JavaFXUtils.setOnDoubleClick;
 
 public class ProductsView {
 

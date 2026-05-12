@@ -1,4 +1,4 @@
-package sales.ui;
+package sales.feature.base.ui;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -7,10 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import sales.controllers.AppController;
-import sales.controllers.ProductController;
-import sales.data.DataService;
-import sales.ui.views.ErrorView;
+import sales.feature.base.controller.AppController;
+import sales.feature.product.ProductController;
+import sales.feature.base.data.DataService;
+import sales.feature.base.ui.views.ErrorView;
 
 public class SalesApp extends Application implements MainWindow {
 

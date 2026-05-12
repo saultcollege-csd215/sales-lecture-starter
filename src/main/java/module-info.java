@@ -3,7 +3,6 @@ module sales {
     requires javafx.controls;
     requires java.logging;
 
-    exports sales.ui;
-    exports sales.ui.helpers;
     exports sales;
+    exports sales.feature.base.ui;
 }

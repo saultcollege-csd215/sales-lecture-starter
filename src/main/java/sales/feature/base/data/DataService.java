@@ -1,4 +1,6 @@
-package sales.data;
+package sales.feature.base.data;
+
+import sales.feature.product.ProductRepository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

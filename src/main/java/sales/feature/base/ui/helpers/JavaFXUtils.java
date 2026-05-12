@@ -1,4 +1,4 @@
-package sales.ui.helpers;
+package sales.feature.base.ui.helpers;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;

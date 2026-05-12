@@ -1,6 +1,4 @@
-package sales.controllers;
-
-import sales.data.DataAccessException;
+package sales.feature.base.data;
 
 @FunctionalInterface
 public interface DataAction {

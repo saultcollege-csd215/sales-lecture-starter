@@ -1,7 +1,9 @@
-package sales.data;
+package sales.feature.product;
 
 import sales.core.Product;
 import sales.core.validation.ProductData;
+import sales.feature.base.data.BaseRepository;
+import sales.feature.base.data.DataAccessException;
 
 import java.sql.Connection;
 import java.sql.SQLException;

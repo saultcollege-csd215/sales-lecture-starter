@@ -1,4 +1,4 @@
-package sales.ui;
+package sales.feature.base.ui;
 
 import javafx.scene.Node;
 

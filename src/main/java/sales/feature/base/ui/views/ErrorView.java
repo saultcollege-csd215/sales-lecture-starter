@@ -1,4 +1,4 @@
-package sales.ui.views;
+package sales.feature.base.ui.views;
 
 import javafx.geometry.Insets;
 import javafx.scene.Node;

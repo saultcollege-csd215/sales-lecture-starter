@@ -1,4 +1,4 @@
-package sales.ui.helpers;
+package sales.feature.base.ui.helpers;
 
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;

@@ -1,4 +1,4 @@
-package sales.ui.views;
+package sales.feature.base.ui.views;
 
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;

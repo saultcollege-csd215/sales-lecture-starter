@@ -1,6 +1,7 @@
-package sales.controllers;
+package sales.feature.base.controller;
 
-import sales.ui.MainWindow;
+import sales.feature.base.data.DataAction;
+import sales.feature.base.ui.MainWindow;
 
 /**
  * Base controller class that provides common functionality for all controllers.
