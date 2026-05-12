@@ -13,9 +13,9 @@ public class DataService {
     private final Connection connection;
     private final ProductRepository productRepository;
 
-    public DataService() throws DataAccessException {
+    public DataService(String connectionString) throws DataAccessException {
         try {
-            this.connection = DriverManager.getConnection("jdbc:sqlite:northwind.db");
+            this.connection = DriverManager.getConnection(connectionString);
             this.productRepository = new ProductRepository(connection);
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Could not connect to database.", e);

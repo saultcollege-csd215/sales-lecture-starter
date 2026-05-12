@@ -35,7 +35,7 @@ public class ProductNewView {
         var nameTextField = new TextField(viewModel.productName());
         addValidatedFieldToGrid("Name", nameTextField, grid, 0,viewModel.messages().get("name"));
 
-        var priceTextField = new NumberField(viewModel.price, false, 2);
+        var priceTextField = new NumberField(viewModel.price(), false, 2);
         addValidatedFieldToGrid("Price", priceTextField, grid, 2,viewModel.messages().get("price"));
 
         var stockTextField = new NumberField(viewModel.unitsInStock(), false, 0);
@@ -52,8 +52,8 @@ public class ProductNewView {
         var saveButton = new Button("Save");
         saveButton.setOnAction(_ -> viewModel.onSave().accept(new ProductData.Unvalidated(
                     nameTextField.getText(),
-                    Double.parseDouble(priceTextField.getText()),
-                    Integer.parseInt(stockTextField.getText()),
+                    priceTextField.getValue(),
+                    stockTextField.getIntValue(),
                     discontinuedChoice.isSelected())));
 
         var spacer = new Region();

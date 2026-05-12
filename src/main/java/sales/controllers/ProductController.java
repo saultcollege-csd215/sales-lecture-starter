@@ -24,12 +24,10 @@ public class ProductController extends BaseController {
 
     public void showProducts() {
         mainWindow.setTitle("Products");
-        try {
+        accessDataOrShowError(() -> {
             var viewModel = new ProductsView.ViewModel(repo.all(), this::showProduct);
             mainWindow.setMainScene(ProductsView.createScene(viewModel));
-        } catch (DataAccessException ex) {
-            mainWindow.showError(ex);
-        }
+        });
     }
 
     public void showNewProduct() {
@@ -74,7 +72,7 @@ public class ProductController extends BaseController {
     }
 
     public void createProduct(ProductData.Unvalidated p) {
-        try {
+        accessDataOrShowError(() -> {
             var validationResult = ProductValidator.validate(p);
 
             switch (validationResult) {
@@ -85,13 +83,11 @@ public class ProductController extends BaseController {
                 }
                 case Fail result -> showNewProduct(p, result.messages());
             }
-        } catch (DataAccessException e) {
-            mainWindow.showError(e);
-        }
+        });
     }
 
     public void updateProduct(int productId, ProductData.Unvalidated p) {
-        try {
+        accessDataOrShowError(() -> {
             var validationResult = ProductValidator.validate(p);
 
             switch (validationResult) {
@@ -114,18 +110,14 @@ public class ProductController extends BaseController {
                     mainWindow.setMainScene(ProductEditView.createScene(viewModel));
                 }
             }
-        } catch (DataAccessException e) {
-            mainWindow.showError(e);
-        }
+        });
     }
 
     public void deleteProduct(int productId) {
-        try {
+        accessDataOrShowError(() -> {
             repo.delete(productId);
             showProducts();
-        } catch (DataAccessException e) {
-            mainWindow.showError(e);
-        }
+        });
     }
 
 }

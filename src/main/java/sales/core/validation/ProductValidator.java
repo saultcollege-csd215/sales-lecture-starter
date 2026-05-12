@@ -28,7 +28,7 @@ public class ProductValidator {
     public static Result validate(ProductData.Unvalidated product) {
         String name = product.name();
         var messages = new ValidationMessages();
-        if (name.trim().isEmpty()) {
+        if (name.trim().isBlank()) {
             messages.add("name", "Product name is required.");
         }
 
