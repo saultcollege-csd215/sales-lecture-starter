@@ -8,11 +8,21 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Provides access to data repositories that connect to the underlying database
+ */
 public class DataService {
 
     private static final Logger logger = Logger.getLogger(DataService.class.getName());
 
+    /**
+     * A JDBC Database connection object
+     */
     private final Connection connection;
+
+    /**
+     * The Product repository
+     */
     private final ProductRepository productRepository;
 
     public DataService(String connectionString) throws DataAccessException {
@@ -25,6 +35,9 @@ public class DataService {
         }
     }
 
+    /**
+     * Closes the database connection
+     */
     public void stop() {
         try {
             connection.close();

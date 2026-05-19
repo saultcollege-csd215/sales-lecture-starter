@@ -12,14 +12,26 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * A layer of abstraction between the underlying database and the app core.
+ * The app retrieves data through the repository, thereby isolating itself from a specific
+ * database.  I.e. *ALL* SQL and database-specific code is in Repository classes, and NOWHERE ELSE.
+ */
 public class ProductRepository extends BaseRepository {
 
     private static final Logger logger = Logger.getLogger(ProductRepository.class.getName());
 
+    /**
+     * @param connection The JDBC connection object for the specific database
+     */
     public ProductRepository(Connection connection) {
         super(connection);
     }
 
+    /**
+     * @return The list of all Products in the database
+     * @throws DataAccessException
+     */
     public List<Product> all() throws DataAccessException {
 
         try {
@@ -51,6 +63,12 @@ public class ProductRepository extends BaseRepository {
         }
     }
 
+    /**
+     * Create a new product row from the given valid product data
+     * @param p The valid product data
+     * @return The database id of the newly created product
+     * @throws DataAccessException
+     */
     public Product create(ProductData.Validated p) throws DataAccessException{
         try {
             var statement = connection.prepareStatement(
@@ -81,6 +99,13 @@ public class ProductRepository extends BaseRepository {
         }
     }
 
+    /**
+     * Updates the given product with valid product data
+     * @param productId The id of the product to update
+     * @param p The valid product data
+     * @return The updated Product object
+     * @throws DataAccessException
+     */
     public Product update(int productId, ProductData.Validated p) throws DataAccessException {
         try {
             var statement = connection.prepareStatement(
@@ -113,6 +138,11 @@ public class ProductRepository extends BaseRepository {
         }
     }
 
+    /**
+     * Delete the given product from the database
+     * @param productId The id of the product to delete
+     * @throws DataAccessException
+     */
     public void delete(int productId) throws DataAccessException {
         try {
             var statement = connection.prepareStatement(
