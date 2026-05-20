@@ -30,7 +30,7 @@ public class ProductRepository extends BaseRepository {
 
     /**
      * @return The list of all Products in the database
-     * @throws DataAccessException
+     * @throws DataAccessException If an SQLException occurs
      */
     public List<Product> all() throws DataAccessException {
 
@@ -67,7 +67,7 @@ public class ProductRepository extends BaseRepository {
      * Create a new product row from the given valid product data
      * @param p The valid product data
      * @return The database id of the newly created product
-     * @throws DataAccessException
+     * @throws DataAccessException If an SQLException occurs
      */
     public Product create(ProductData.Validated p) throws DataAccessException{
         try {
@@ -104,7 +104,7 @@ public class ProductRepository extends BaseRepository {
      * @param productId The id of the product to update
      * @param p The valid product data
      * @return The updated Product object
-     * @throws DataAccessException
+     * @throws DataAccessException If an SQLException occurs
      */
     public Product update(int productId, ProductData.Validated p) throws DataAccessException {
         try {
@@ -141,7 +141,7 @@ public class ProductRepository extends BaseRepository {
     /**
      * Delete the given product from the database
      * @param productId The id of the product to delete
-     * @throws DataAccessException
+     * @throws DataAccessException If an SQLException occurs
      */
     public void delete(int productId) throws DataAccessException {
         try {
